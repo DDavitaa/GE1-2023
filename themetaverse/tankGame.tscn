@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bgdpshvm7752w"]
+[gd_scene load_steps=23 format=3 uid="uid://bsd26l7esfabd"]
 
 [ext_resource type="Script" path="res://Start_XR.gd" id="1_8q0sy"]
 [ext_resource type="Environment" uid="uid://b5dnnkkpxo3qc" path="res://seek_environment..tres" id="2_jagpw"]
@@ -178,6 +178,5 @@ shape = SubResource("BoxShape3D_w0fv0")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50052, 4.70397, 7.73744)
 amount = 10
-speed_scale = 0.5
 process_material = SubResource("ParticleProcessMaterial_tfs6p")
 draw_pass_1 = SubResource("BoxMesh_4tsbe")
