@@ -1,16 +1,16 @@
-[gd_scene load_steps=36 format=3 uid="uid://h0lqkymsxc1x"]
+[gd_scene load_steps=32 format=3 uid="uid://h0lqkymsxc1x"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_3jv87"]
 [ext_resource type="PackedScene" uid="uid://beyg5xrsag28t" path="res://assets/JetGun.glb" id="2_ek2v2"]
 [ext_resource type="Script" path="res://FPController.gd" id="2_yily8"]
-[ext_resource type="Environment" uid="uid://cidc5gvr4vwfu" path="res://seek_environment..tres" id="3_loph3"]
+[ext_resource type="Environment" uid="uid://b5dnnkkpxo3qc" path="res://seek_environment..tres" id="3_loph3"]
 [ext_resource type="Script" path="res://jet.gd" id="4_3dkdw"]
 [ext_resource type="PackedScene" path="res://SceneSwitcher.tscn" id="6_slgkm"]
-[ext_resource type="Material" uid="uid://dptlskiewm84d" path="res://controller_material.tres" id="6_vv0hl"]
+[ext_resource type="Material" path="res://controller_material.tres" id="6_vv0hl"]
 [ext_resource type="Script" path="res://wall.gd" id="7_7xqgj"]
-[ext_resource type="Material" uid="uid://dohx2u81lglvd" path="res://jet_material.tres" id="7_m27if"]
+[ext_resource type="Material" path="res://jet_material.tres" id="7_m27if"]
 [ext_resource type="PackedScene" uid="uid://bsmshwh5fdw1y" path="res://Box.tscn" id="8_rgfmu"]
-[ext_resource type="Material" uid="uid://b7um1scsijui1" path="res://Ground.tres" id="9_lvxc7"]
+[ext_resource type="Material" uid="uid://ci2gjuqy2cgpj" path="res://Ground.tres" id="9_lvxc7"]
 [ext_resource type="Script" path="res://ArmyTank.gd" id="10_w8qfx"]
 [ext_resource type="PackedScene" uid="uid://b4pok7xvls88x" path="res://bullet1.tscn" id="11_pnsl1"]
 [ext_resource type="Script" path="res://circles_of_things.gd" id="13_5b3ar"]
@@ -76,15 +76,6 @@ albedo_color = Color(0.894118, 0, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_w0fv0"]
 size = Vector3(0.25, 0.25, 2)
 
-[sub_resource type="TorusMesh" id="TorusMesh_wat53"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4viw"]
-albedo_color = Color(1, 1, 0, 1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q1gp3"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_xctx4"]
-
 [node name="root" type="Node3D"]
 script = ExtResource("1_3jv87")
 
@@ -114,13 +105,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
 script = ExtResource("4_3dkdw")
 power = 1
 
-[node name="JetGun" parent="Player/XROrigin3D/XRController3D/jet" instance=ExtResource("2_ek2v2")]
-transform = Transform3D(9.55343e-17, -2.18557e-09, -0.05, -0.05, -2.18557e-09, 0, -2.18557e-09, 0.05, -2.18557e-09, 0, 0, 0)
-
-[node name="JetGun2" parent="Player/XROrigin3D/XRController3D/jet/JetGun" index="0"]
-transform = Transform3D(1, 0, -8.47033e-22, 0, 1, 0, -8.47033e-22, 0, 1, -2.75978, -2.98355, 0)
-surface_material_override/0 = ExtResource("6_vv0hl")
-
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Player/XROrigin3D/XRController3D/jet"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.0042727, -0.0899854, -0.00745869)
 material_override = ExtResource("7_m27if")
@@ -128,6 +112,13 @@ amount = 500
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_amrs5")
 draw_pass_1 = SubResource("PrismMesh_y464p")
+
+[node name="JetGun" parent="Player/XROrigin3D/XRController3D/jet" instance=ExtResource("2_ek2v2")]
+transform = Transform3D(9.55343e-17, -2.18557e-09, -0.05, -0.05, -2.18557e-09, 0, -2.18557e-09, 0.05, -2.18557e-09, 0, 0, 0)
+
+[node name="JetGun2" parent="Player/XROrigin3D/XRController3D/jet/JetGun" index="0"]
+transform = Transform3D(1, 0, -8.47033e-22, 0, 1, 0, -8.47033e-22, 0, 1, -2.75978, -2.98355, 0)
+surface_material_override/0 = ExtResource("6_vv0hl")
 
 [node name="XRController3D2" type="XRController3D" parent="Player/XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.48393, 0, 0)
@@ -138,13 +129,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
 script = ExtResource("4_3dkdw")
 power = 1
 
-[node name="JetGun" parent="Player/XROrigin3D/XRController3D2/jet" instance=ExtResource("2_ek2v2")]
-transform = Transform3D(9.55343e-17, -2.18557e-09, -0.05, -0.05, -2.18557e-09, 0, -2.18557e-09, 0.05, -2.18557e-09, 0, 0, 0)
-
-[node name="JetGun2" parent="Player/XROrigin3D/XRController3D2/jet/JetGun" index="0"]
-transform = Transform3D(1, 0, -8.47033e-22, 0, 1, 0, -8.47033e-22, 0, 1, -2.75978, -2.98355, 0)
-surface_material_override/0 = ExtResource("6_vv0hl")
-
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Player/XROrigin3D/XRController3D2/jet"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.0042727, -0.0899854, -0.00745869)
 material_override = ExtResource("7_m27if")
@@ -152,6 +136,13 @@ amount = 500
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_amrs5")
 draw_pass_1 = SubResource("PrismMesh_y464p")
+
+[node name="JetGun" parent="Player/XROrigin3D/XRController3D2/jet" instance=ExtResource("2_ek2v2")]
+transform = Transform3D(9.55343e-17, -2.18557e-09, -0.05, -0.05, -2.18557e-09, 0, -2.18557e-09, 0.05, -2.18557e-09, 0, 0, 0)
+
+[node name="JetGun2" parent="Player/XROrigin3D/XRController3D2/jet/JetGun" index="0"]
+transform = Transform3D(1, 0, -8.47033e-22, 0, 1, 0, -8.47033e-22, 0, 1, -2.75978, -2.98355, 0)
+surface_material_override/0 = ExtResource("6_vv0hl")
 
 [node name="SceneSwitcher" parent="." instance=ExtResource("6_slgkm")]
 
@@ -219,12 +210,14 @@ transform = Transform3D(-0.474119, -0.577538, 0.664575, -0.276459, 0.814281, 0.5
 script = ExtResource("13_5b3ar")
 dod = ExtResource("15_ssck7")
 
+[connection signal="button_pressed" from="Player/XROrigin3D/XRController3D" to="Player/XROrigin3D/XRController3D/jet" method="_on_xr_controller_3d_button_pressed"]
+[connection signal="button_released" from="Player/XROrigin3D/XRController3D" to="Player/XROrigin3D/XRController3D/jet" method="_on_xr_controller_3d_button_released"]
 [connection signal="input_float_changed" from="Player/XROrigin3D/XRController3D" to="Player/XROrigin3D/XRController3D/jet" method="_on_xr_controller_3d_input_float_changed"]
-<<<<<<< HEAD
-=======
+[connection signal="input_vector2_changed" from="Player/XROrigin3D/XRController3D" to="Player/XROrigin3D/XRController3D/jet" method="_on_xr_controller_3d_input_vector_2_changed"]
+[connection signal="button_pressed" from="Player/XROrigin3D/XRController3D2" to="Player/XROrigin3D/XRController3D2/jet" method="_on_xr_controller_3d_2_button_pressed"]
+[connection signal="button_released" from="Player/XROrigin3D/XRController3D2" to="Player/XROrigin3D/XRController3D2/jet" method="_on_xr_controller_3d_2_button_released"]
 [connection signal="input_float_changed" from="Player/XROrigin3D/XRController3D2" to="Player/XROrigin3D/XRController3D2/jet" method="_on_xr_controller_3d_input_float_changed"]
-[connection signal="area_entered" from="Ring_Outer/Ring_Inner/Area3D" to="Player" method="_on_area_3d_area_entered"]
+[connection signal="input_vector2_changed" from="Player/XROrigin3D/XRController3D2" to="Player/XROrigin3D/XRController3D2/jet" method="_on_xr_controller_3d_2_input_vector_2_changed"]
 
 [editable path="Player/XROrigin3D/XRController3D/jet/JetGun"]
 [editable path="Player/XROrigin3D/XRController3D2/jet/JetGun"]
->>>>>>> 0b2a5dc96ecaa999a8b22ec0b524a3f5a7bbec95
